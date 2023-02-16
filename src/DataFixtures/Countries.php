@@ -10,11 +10,39 @@ class Countries extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $countryNames = ["Germany", "Italy", "Greece"];
+        $data = [
+            [
+                'country' => [
+                    'name' => "Germany"
+                ],
+                'vat' => [
+                    'percent' => "19.00"
+                ]
+            ],
+            [
+                'country' => [
+                    'name' => "Italy"
+                ],
+                'vat' => [
+                    'percent' => "22.00"
+                ]
+            ],
+            [
+                'country' => [
+                    'name' => "Greece"
+                ],
+                'vat' => [
+                    'percent' => "24.00"
+                ]
+            ],
+        ];
 
-        foreach ($countryNames as $countryName) {
+        foreach ($data as $dataRow) {
             $country = new Entity\Country();
-            $country->setName($countryName);
+            $country->setName($dataRow['country']['name']);
+            $vat = new Entity\VAT();
+            $vat->setPercent($dataRow['vat']['percent']);
+            $country->setVAT($vat);            
             $manager->persist($country);
         }
 
