@@ -43,7 +43,7 @@ class RootController extends AbstractController
         );
     }
 
-    #[Route('/purchase', name: 'app_purchase')]
+    #[Route('/purchase/{product<\d+>}', name: 'app_purchase')]
     public function purchase(Request $request, ManagerRegistry $doctrine): Response
     {
         $taxID = $request->get("tax_id");
