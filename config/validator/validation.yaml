@@ -6,6 +6,6 @@ App\FormData\ProductPurchase:
         taxID:
             - NotBlank:
                   message: "Tax ID field must not be left blank"
-            - Length:
-                  min: 8
-                  minMessage: "Tax ID minimum length is {{ limit }}"
+            - Regex:
+                  pattern: /^[a-zA-Z]{2}\d{9}$/
+                  message: "Tax id does not match the expected XX123456789 format"
