@@ -39,28 +39,31 @@ class CountryRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Country[] Returns an array of Country objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('c.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function getById(?string $id): ?Country
+    {
+        if (empty($id)) {
+            return null;
+        }
 
-//    public function findOneBySomeField($value): ?Country
-//    {
-//        return $this->createQueryBuilder('c')
-//            ->andWhere('c.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        return $this->createQueryBuilder("c")
+            ->andWhere("c.id=:id")
+            ->setParameter("id", $id)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    public function getByTaxIDPrefix(?string $prefix): ?Country
+    {
+        if (empty($prefix)) {
+            return null;
+        }
+
+        return $this->createQueryBuilder("c")
+            ->andWhere("c.taxIDPrefix=:tax_id_prefix")
+            ->setParameter("tax_id_prefix", $prefix)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }
