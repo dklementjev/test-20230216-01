@@ -13,7 +13,8 @@ class Countries extends Fixture
         $data = [
             [
                 'country' => [
-                    'name' => "Germany"
+                    'name' => "Germany",
+                    'tax_id_prefix' => "DE",
                 ],
                 'vat' => [
                     'percent' => "19.00"
@@ -21,7 +22,8 @@ class Countries extends Fixture
             ],
             [
                 'country' => [
-                    'name' => "Italy"
+                    'name' => "Italy",
+                    'tax_id_prefix' => "IT",
                 ],
                 'vat' => [
                     'percent' => "22.00"
@@ -29,7 +31,8 @@ class Countries extends Fixture
             ],
             [
                 'country' => [
-                    'name' => "Greece"
+                    'name' => "Greece",
+                    'tax_id_prefix' => "GR",
                 ],
                 'vat' => [
                     'percent' => "24.00"
@@ -40,9 +43,12 @@ class Countries extends Fixture
         foreach ($data as $dataRow) {
             $country = new Entity\Country();
             $country->setName($dataRow['country']['name']);
+            $country->setTaxIDPrefix($dataRow['country']['tax_id_prefix']);
+
             $vat = new Entity\VAT();
             $vat->setPercent($dataRow['vat']['percent']);
-            $country->setVAT($vat);            
+            $country->setVAT($vat);
+                        
             $manager->persist($country);
         }
 
