@@ -49,4 +49,9 @@ class VAT
 
         return $this;
     }
+
+    public function getTotalPrice(float $price): float
+    {
+        return ($price + $price*$this->getPercent()/100);
+    }
 }
