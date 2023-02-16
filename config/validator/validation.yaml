@@ -1,0 +1,11 @@
+App\FormData\ProductPurchase:
+    properties:
+        product:
+            - NotBlank:
+                  message: "Product field must not be blank"
+        taxID:
+            - NotBlank:
+                  message: "Tax ID field must not be left blank"
+            - Length:
+                  min: 8
+                  minMessage: "Tax ID minimum length is {{ limit }}"
