@@ -2,8 +2,23 @@
 
 {% block title %}Products page{% endblock %}
 
+{% form_theme form "bootstrap_5_layout.html.twig" %}
+
 {% block body %}
-<div class="container">
-    
+<div class="container py-5">
+    {{ form_start(form) }}
+    <div class="card w-50 mx-auto">
+        <div class="card-header">
+            Purchase form
+        </div>
+        <div class="card-body">
+            {{ form_row(form.product) }}
+            {{ form_row(form.tax_id) }}
+        </div>
+        <div class="card-footer text-end">
+            {{ form_widget(form.submit) }}
+        </div>
+    </div>
+    {{form_end(form) }}
 </div>
 {% endblock %}
