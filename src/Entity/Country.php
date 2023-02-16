@@ -19,6 +19,9 @@ class Country
     #[ORM\OneToOne(mappedBy: 'country', cascade: ['persist', 'remove'])]
     private ?VAT $VAT = null;
 
+    #[ORM\Column(length: 16, name: "tax_id_prefix", nullable: true)]
+    private ?string $taxIDPrefix = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -49,6 +52,18 @@ class Country
         }
 
         $this->VAT = $VAT;
+
+        return $this;
+    }
+
+    public function getTaxIDPrefix(): ?string
+    {
+        return $this->taxIDPrefix;
+    }
+
+    public function setTaxIDPrefix(?string $prefix): self
+    {
+        $this->taxIDPrefix = $prefix;
 
         return $this;
     }
