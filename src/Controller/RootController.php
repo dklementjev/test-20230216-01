@@ -18,15 +18,15 @@ class RootController extends AbstractController
     {
         $formData = new FormData\ProductPurchase();
         $form = $this->createForm(
-            Form\ProductPurchaseType::class, 
-            $formData, 
-            ['method'=>"POST"]
+            Form\ProductPurchaseType::class,
+            $formData,
+            ['method' => "POST"]
         );
         if ($request->isMethod("POST")) {
             $form->handleRequest($request);
-            if ($form->isValid()){
+            if ($form->isValid()) {
                 return $this->redirectToRoute(
-                    "app_purchase", 
+                    "app_purchase",
                     [
                         'product' => $formData->getProduct()->getId(),
                         'tax_id' => $formData->getTaxID()
@@ -36,7 +36,7 @@ class RootController extends AbstractController
         }
 
         return $this->render(
-            'root/index.html.twig', 
+            'root/index.html.twig',
             [
                 'form' => $form
             ]
@@ -58,7 +58,7 @@ class RootController extends AbstractController
         }
 
         /** @var \App\Repository\CountryRepository $countryRepo */
-        $countryRepo = $doctrine->getRepository(Entity\Country::class);        
+        $countryRepo = $doctrine->getRepository(Entity\Country::class);
         $country = $countryRepo->getByTaxIDPrefix($taxIDPrefix);
         if (empty($country)) {
             throw $this->createNotFoundException("Country not found (unknown tax ID prefix?)");

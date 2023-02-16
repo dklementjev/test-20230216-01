@@ -48,7 +48,7 @@ class Countries extends Fixture
             $vat = new Entity\VAT();
             $vat->setPercent($dataRow['vat']['percent']);
             $country->setVAT($vat);
-                        
+
             $manager->persist($country);
         }
 

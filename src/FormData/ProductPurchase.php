@@ -24,7 +24,7 @@ class ProductPurchase
     {
         return $this->taxID;
     }
-    
+
     public function setTaxID(?string $taxID): void
     {
         $this->taxID = $taxID;

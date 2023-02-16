@@ -16,7 +16,7 @@ class ProductPurchaseType extends AbstractType
     {
         $builder
             ->add(
-                "product", 
+                "product",
                 DoctrineFormTypes\EntityType::class,
                 [
                     'label' => "Product",
@@ -35,7 +35,7 @@ class ProductPurchaseType extends AbstractType
                 ]
             )
             ->add(
-                "submit", 
+                "submit",
                 FormTypes\SubmitType::class,
                 [
                     'label' => "Purchase"

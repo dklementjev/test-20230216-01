@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-
 use App\Entity;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -22,7 +21,7 @@ class Products extends Fixture
             $product->setPrice($dataRow['price']);
             $manager->persist($product);
         }
-        
+
         $manager->flush();
     }
 }
